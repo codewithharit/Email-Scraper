@@ -11,5 +11,5 @@ An email scraper tool has an email finder browser extension that extracts email 
 git clone https://github.com/codewithharit/Email-Scraper.git
 cd Email-Scraper
 chmod +x *
-bash linux.sh
+bash emailscraper.sh
 ```
