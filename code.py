@@ -27,7 +27,7 @@ try:
         parts = urllib.parse.urlsplit(url)
         base_url = '{0.scheme}://{0.netloc}'.format(parts)
 
-        path = url[:url.rfind('/')+1] if '/' in parts.path else url
+        path = url[:url.rfind('/') + 1] if '/' in parts.path else url
 
         print('[%d] Processing %s' % (count, url))
         try:
@@ -35,7 +35,7 @@ try:
         except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError):
             continue
 
-        new_emails = set(re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", response.text, re.I))
+        new_emails = set(re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.(?![(jpg|png|gif|bmp|hevc|webp)])[a-z]+", response.text, re.I))
         emails.update(new_emails)
 
         soup = BeautifulSoup(response.text, features="lxml")
